@@ -1,0 +1,21 @@
+<launch>
+
+  <!--<include file="$(find kw_ft_sensor)/launch/kw_ft.launch">
+  </include>-->
+  <arg name = "serial_num"  default="/dev/ttyUSB0"/>
+  <param name = "serialNum" type = "string" value = "$(arg serial_num)" />
+  <arg name = "reocrd_dir"  default="./home/catkin_ws/record/hrc_vf_data/"/>
+  <param name = "reocrdDir" type = "string" value = "$(arg reocrd_dir)" />
+  <node name="get_ft_data" pkg = "hrc" type = "get_ft_data" output = "screen" >
+  </node>
+  <node name="get_ur_data" pkg = "hrc" type = "get_ur_data" output = "screen" >
+  </node>
+  <!--node name="hrc_vf_main" pkg = "hrc" type = "hrc_vf_main" output = "screen" >
+  </node-->
+  <node name="ur_move" pkg = "hrc" type = "ur_move" output = "screen" >
+  </node>
+ <node name="record_node" pkg = "hrc" type = "record_node" output = "screen">
+  </node>
+  <node name="myadmittance_cart" pkg = "hrc" type = "myadmittance_cart" output = "screen">
+  </node>
+</launch>
